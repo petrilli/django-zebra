@@ -27,9 +27,9 @@ class StripePaymentForm(CardForm):
         self.fields['card_expiry_month'].choices = months
 
     card_number = forms.CharField(required=False, max_length=20,
-        widget=NoNameTextInput())
+        widget=NoNameTextInput(attrs={'class': 'span5'}))
     card_cvv = forms.CharField(required=False, max_length=4,
-        widget=NoNameTextInput())
+        widget=NoNameTextInput(attrs={'class': 'span2'}))
     card_expiry_month = forms.ChoiceField(required=False, widget=NoNameSelect(),
         choices=MONTHS.iteritems())
     card_expiry_year = forms.ChoiceField(required=False, widget=NoNameSelect(),

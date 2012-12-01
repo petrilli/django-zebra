@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("form").submit(function (event) {
         // Disable the button so someone doesn't hit it twice
-        $("#submit-id-submit").prop("value", "Submitting...").attr("disabled", "disabled").addClass("disabled");
+        $("#submit-id-pay").prop("value", "Submitting...").attr("disabled", "disabled").addClass("disabled");
 
         Stripe.createToken(
             {
@@ -18,7 +18,7 @@ $(document).ready(function () {
 function stripeResponseHandler(status, response) {
     if (response.error) {
         $("#payment-errors").text(response.error.message);
-        $("#submit-id-submit").removeAttr("disabled").removeClass("disabled");
+        $("#submit-id-pay").removeAttr("disabled").removeClass("disabled");
     } else {
         $("#payment-errors").hide();
         $("#id_last_4_digits").val(response.card.last4);
